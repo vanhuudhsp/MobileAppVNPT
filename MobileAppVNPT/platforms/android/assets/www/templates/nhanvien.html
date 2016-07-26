@@ -1,0 +1,12 @@
+﻿<ion-view view-title="Thông Tin Nhân Viên" hide-back-button="true">
+    <ion-content ng-show="!isAuthenticated">
+        <div>Cần đăng nhập</div>
+    </ion-content>
+    <ion-content ng-show="isAuthenticated">
+        <div>ID Nhân Viên: {{ user.NhanVienId }}</div>
+        <div number-to-string ng-model="user.MaTinh" >Mã Tỉnh: {{ user.MaTinh }} : {{ typeOf(x) }} </div>
+        <div>Access token: {{ token.access_token }}</div>
+        <div>Expries in: {{ convertToDate(token.expires_in) | date :"MM/dd/yyyy" }}</div>
+        <div>Token type: {{ token.token_type }}</div>
+    </ion-content>
+</ion-view>
