@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAppVNPT.factory'])
+angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAppVNPT.factory', 'MobileAppVNPT.directives', 'ngCordova', 'ngCordovaOauth'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,8 +22,8 @@ angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAp
   });
 })
 
-.run(['$rootScope', 'AuthFactory', function ($rootScope, AuthFactory) {
-    AuthFactory.deleteAuth();
+.run(['$rootScope', 'LSFactory','AuthFactory', function ($rootScope, LSFactory, AuthFactory) {
+    LSFactory.clear();
     $rootScope.isAuthenticated = AuthFactory.isLoggedIn();
     // utility method to convert number to an array of elements
     $rootScope.getNumber = function (num) {
@@ -41,12 +41,12 @@ angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAp
         templateUrl: "templates/menu.html",
         controller: 'AppCtrl'
     })
-    .state('app.nhanvien', {
-        url: "/nhanvien",
+    .state('app.trangchu', {
+        url: "/trangchu",
         views: {
             'menuContent': {
-                templateUrl: "templates/nhanvien.html",
-                controller: 'NhanVienCtrl'
+                templateUrl: "templates/trangchu.html",
+                controller: 'TrangChuCtrl'
             }
         }
     })
@@ -59,5 +59,32 @@ angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAp
             }
         }
     })
-    $urlRouterProvider.otherwise('/app/nhanvien');
+
+    .state('tab', {
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/tabs.html'
+    })
+
+    .state('tab.baohong', {
+        url: "/baohong",
+         views: {
+             'tab-baohong': {
+                 templateUrl: "templates/baohong.html",
+                 controller: 'BaoHongCtrl'
+             }
+         }
+    })
+
+    .state('tab.dstientrinh', {
+        url: "/dstientrinh",
+        cache: false,
+        views: {
+                'tab-dstientrinh': {
+                    templateUrl: "templates/dstientrinh.html",
+                    controller: 'DSTienTrinhCtrl'
+                }
+        }
+    })
+    $urlRouterProvider.otherwise('/app/trangchu');
 }]);

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ionicframework.ionicsidemenu" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Console">
+        <param name="wp-package" value="DebugConsole" />
+    </feature>
+    <feature name="Device">
+        <param name="wp-package" value="Device" />
+    </feature>
+    <feature name="File">
+        <param name="wp-package" value="File" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="wp-package" value="InAppBrowser" />
+    </feature>
+    <feature name="Capture">
+        <param name="wp-package" value="Capture" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="wp-package" value="StatusBar" />
+    </feature>
+    <name>App-BaoHong-VNPTBD</name>
+    <description>
+        An Ionic Framework and Cordova project.
+    </description>
+    <author email="you@example.com" href="http://example.com.com/">
+      Your Name Here
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="KeepRunning" value="True" />
+    <preference name="ShowTitle" value="True" />
+    <preference name="InAppBrowserStorageEnabled" value="True" />
+    <preference name="SuppressesIncrementalRendering" value="True" />
+    <preference name="windows-target-version" value="8.1" />
+    <preference name="loadUrlTimeoutValue" value="700000" />
+    <preference name="target-device" value="handset" />
+    <access launch-external="yes" origin="tel:*" />
+</widget>

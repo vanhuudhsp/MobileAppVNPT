@@ -32,11 +32,28 @@ angular.module('MobileAppVNPT.factory', [])
             return JSON.parse(localStorage.getItem(key));
         },
         set: function (key, data) {
-            return localStorage.setItem(key,
-            JSON.stringify(data));
+            return localStorage.setItem(key,JSON.stringify(data));
         },
         delete: function (key) {
             return localStorage.removeItem(key);
+        },
+        getAll: function () {
+            var dsbaohong = [];
+            var items = Object.keys(localStorage);
+            for (var i = 0; i < items.length; i++) {
+                if (items[i] !== 'user' || items[i] != 'token') {
+                    dsbaohong.push(JSON.parse(localStorage[items[i]]));
+                }
+            }
+            return dsbaohong;
+        },
+        deleteAll: function () {
+            var items = Object.keys(localStorage);
+            for (var i = 0; i < items.length; i++) {
+                if (items[i] !== 'user' && items[i] != 'token') {
+                    localStorage.removeItem(items[i]);
+                }
+            }
         }
     };
     return LSAPI;
@@ -75,8 +92,9 @@ angular.module('MobileAppVNPT.factory', [])
             config.headers = config.headers || {};
             var token = AuthFactory.getToken();
             if (token) {
-                config.headers['Authorization'] = token.token_type + ' ' + token.access_token;
+                config.headers['Authorization'] = token.token_type + '  ' + token.access_token;
                 config.headers['Content-Type'] = "application/json;charset=UTF-8";
+                
             }
             return config || $q.when(config);
         },
@@ -90,7 +108,6 @@ angular.module('MobileAppVNPT.factory', [])
     var UserAPI = {
         login: function (user) {
             var data = 'grant_type=password&username='+user.username+'&password='+ user.password +'&MaTinh='+user.MaTinh;
-            console.log(data);
             return $http.post(base + '/oauthtoken', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
         },
         register: function (user) {
@@ -99,9 +116,54 @@ angular.module('MobileAppVNPT.factory', [])
             AuthFactory.deleteAuth();
         },
         KiemTraToken: function () {
-            return $http.get(base + 'api/Account/KiemTraToken');
+            return $http.post(base + '/api/Account/KiemTraToken');
+        },
+        getTTNhanVien: function () {
+            return $http.post(base + '/api/Account/PostThongTinNhanVien', AuthFactory.getUser());
         }
     };
     return UserAPI;
 }
 ])
+
+.factory('BaoHongFactory', ['$http', 'AuthFactory', function ($http, AuthFactory) {
+    var API = {
+        get: function () {
+            return $http.post(base + '/api/BaoHong/PostDSBaoHongTheoNV', AuthFactory.getUser());
+        },
+        getTienTrinh: function (baohongid) {
+            var data = { 'baohongid': parseInt(baohongid) };
+            //console.log(data);
+            return $http.post(base + '/api/BaoHong/PostDsTienTrinh', data);
+
+        },
+        setTienTrinh: function (baohongid, nhanvienid, donviid, noidung) {
+            var data = { 'baohongid': parseInt(baohongid), 'nhanvienid': nhanvienid, 'donviid': donviid, 'noidung': noidung };
+            console.log(data);
+            return $http.post(base + '/api/BaoHong/PostCapNhatTienTrinh', data);
+        }
+    };
+    return API;
+}])
+
+.factory('Utils', [function () {
+    return {
+        getBase64ImageFromInput: function (input, callback) {
+            window.resolveLocalFileSystemURL(input, function (fileEntry) {
+                fileEntry.file(function (file) {
+                    var reader = new FileReader();
+                    reader.onloadend = function (evt) {
+                        callback(null, evt.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                },
+                function () {
+                    callback('failed', null);
+                });
+            },
+            function () {
+                callback('failed', null);
+            });
+        }
+    };
+}])

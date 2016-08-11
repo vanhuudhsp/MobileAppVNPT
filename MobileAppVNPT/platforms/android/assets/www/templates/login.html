@@ -1,5 +1,5 @@
 ﻿<ion-modal-view>
-    <div class="tabs-striped tabs-background-assertive tabs-colorlight">
+    <div class="tabs-striped tabs-background-positive tabs-colorlight">
         <div class="tabs">
             <a class="tab-item" ng-class="{active : viewLogin}" href="javascript:" ng-click="switchTab('login')">
                 <i class="icon ion-locked"></i> Login
@@ -14,7 +14,7 @@
         <ion-header-bar>
             <h1 class="title">Login</h1>
             <div class="buttons">
-                <button class="button button-assertive" ngclick="hide()">
+                <button class="button button-positive" ng-click="hide()">
                     Close
                 </button>
             </div>
@@ -36,7 +36,7 @@
                     </label>
 
                     <label class="item">
-                        <button class="button button-block buttonassertive" ng-click="login()" ng-disabled="!user.username || !user.password || !user.MaTinh" type="submit">
+                        <button class="button button-block button-positive" ng-click="login()" ng-disabled="!user.username || !user.password || !user.MaTinh" type="submit">
                             Log in
                         </button>
                     </label>

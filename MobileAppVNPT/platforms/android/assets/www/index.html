@@ -4,24 +4,50 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-
+    
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- Su dung font lato cho map cua google 
+        - lato.min.css cau hinh trong bower.json -> vao Dependencies -> restore package de tai ve
+        - ionic.app.scss dinh dang style cho app bao gom style map su dung font lato -> khai bao truoc lato.min.css
     -->
+    
+    <link href="lib/lato/css/lato.min.css" rel="stylesheet">
+    <link href="css/ionic.app.scss" rel="stylesheet">
+
     <script src="js/platformOverrides.js"></script>
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
+    <!-- ng-cordova.js,ng-cordova-oauth.js cau hinh trong bower.json -> vao Dependencies -> restore package de tai ve
+        - Phai khai bao truoc ordova.js
+        - Chua cac phuong thuc lam viec voi anh , device va GPS cua google
+         -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.js"></script>
     <script src="cordova.js"></script>
 
-    <!-- your app's js -->
+    <!-- app.js la app dieu khien toan bo ung dung 
+        -- controllers.js chua cac controller dieu khien cac trang
+        -- factory.js khai bao cac model luu du lieu va phuong thuc cua cac doi tuong trong chuong trinh
+        -- directives.js chua cac directives duoc su dung nhu elements (the), attribute (thuoc tinh) hay class trong html
+        -- maps.googleapis.com luu ve file js.js chua cac phuong thuc lam viec voi map cua google. Trong do key dang ky tu google map API
+        * luu y de lam viec voi file anh, camera, google map -> vao config.xml -> plugin -> customs-> plugin id 
+        cai cac plugin sau:
+        cordova-plugin-file
+        cordova-plugin-geolocation
+        cordova-plugin-image-picker
+        cordova-plugin-inappbrowser
+        cordova-plugin-media-capture
+        -->
+
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/factory.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADd5p37JxFYBe4WxWPz4LWPE_fS57pCBI"></script>
   </head>
 
   <body ng-app="MobileAppVNPT" class="platform-android platform-cordova platform-webview">
