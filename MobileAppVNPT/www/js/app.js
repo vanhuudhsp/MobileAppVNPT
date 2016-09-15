@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAppVNPT.factory', 'MobileAppVNPT.directives', 'ngCordova', 'ngCordovaOauth'])
+angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAppVNPT.factory', 'MobileAppVNPT.directives', 'ngCordova', 'ngCordovaOauth', 'chart.js', 'ionic-zoom-view', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -59,6 +59,44 @@ angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAp
             }
         }
     })
+    .state('app.chucnang', {
+        url: "/chucnang",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/chucnang.html",
+                controller: 'ChucNangCtrl'
+            }
+        }
+    })
+
+   .state('app.thongke', {
+       url: "/thongke",
+         views: {
+             'menuContent': {
+                 templateUrl: "templates/thongke.html",
+                 controller: 'ThongKeCtrl'
+             }
+         }
+    })
+    .state('app.ctthongke', {
+        url: "/ctthongke",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/ctthongke.html",
+                controller: 'CTThongKeCtrl'
+            }
+        }
+    })
+    .state('app.bieudo', {
+        url: "/bieudo",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/bieudo.html",
+                controller: 'BieuDoCtrl'
+            }
+        }
+    })
+    
 
     .state('tab', {
       url: '/tab',
@@ -80,7 +118,7 @@ angular.module('MobileAppVNPT', ['ionic', 'MobileAppVNPT.controllers', 'MobileAp
         url: "/dstientrinh",
         cache: false,
         views: {
-                'tab-dstientrinh': {
+            'tab-dstientrinh': {
                     templateUrl: "templates/dstientrinh.html",
                     controller: 'DSTienTrinhCtrl'
                 }

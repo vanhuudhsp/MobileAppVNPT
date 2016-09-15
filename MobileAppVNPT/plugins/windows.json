@@ -1,0 +1,45 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "App-BaoHong-VNPTBD"
+        }
+    },
+    "dependent_plugins": {}
+}

@@ -1,0 +1,22 @@
+﻿<ion-view view-title="Xin chào {{nhanvien.tennv}}" >
+    <ion-content ng-show="!isAuthenticated">
+        <div>Bạn Cần đăng nhập</div>
+    </ion-content>
+    <ion-content ng-show="isAuthenticated">
+        <div class="list">
+            <div class="item item-positive text-center">
+                <b>DANH SÁCH BÁO HỎNG</b>
+            </div>
+            <div class="item item-input item-select" ng-repeat="baohong in dsbaohong" ng-click="selectBaoHong(baohong.baohongid)">
+                <div class="item-icon-left">
+                    <i class="icon ion-settings"></i>
+                    <h2>{{::baohong.tentb}}</h2>
+                    <p>Đ/c: {{::baohong.diachitb}}</p>
+                    <a class="button icon-left ion-ios-telephone button-clear button-dark" ng-if="baohong.nguoibh != null" href="tel: {{baohong.nguoibh.split('-')[0]}}">
+                        {{::baohong.nguoibh}}
+                    </a>
+                </div>
+            </div>
+        </div>
+</ion-content>
+</ion-view>

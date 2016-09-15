@@ -24,7 +24,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
+.spinner svg {
+  width: 28px;
+  height: 28px;
+  stroke: #444;
+  fill: #444;
+}
 .bar .title {
 font-size: 21px;
 }
@@ -115,4 +120,15 @@ border: 1px solid #787878;
 }
 .scroll {
 height: 100%;
+}
+.signup-background {
+    background: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 80%;
+    height: 246px;
+    margin: auto;
+    z-index: 2;
+    position:relative;
 }

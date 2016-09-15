@@ -1,0 +1,24 @@
+﻿<ion-view>
+    <div class="bar bar-header bar-calm">
+        <h1 class="title"><b>CHI TIẾT BÁO HỎNG</b></h1>
+    </div>
+    <ion-content ng-show="!isAuthenticated">
+        <div>Bạn Cần đăng nhập</div>
+    </ion-content>
+    <ion-content ng-show="isAuthenticated">
+        <div class="list">
+            <div class="item item-divider item-text-wrap text-center">
+                <b>Thuê bao: {{baohong.tentb}} </b>
+            </div>
+            <div class="item item-text-wrap">
+                <p>Mã thuê bao: {{baohong.matb}}</p>
+                <p>Đ/c: {{baohong.diachitb}}</p>
+                <p>ĐT: {{baohong.dienthoailh}}</p>
+                <p>Nguyên nhân hỏng: {{baohong.nguyennhanhong}}</p>
+                <p>Ngày báo hỏng: {{baohong.ngaybaohong}}</p>
+                <p>Tình trạng: {{baohong.trangthaibh}}</p>
+                <p>Phụ trách: {{baohong.tovienthong}} - {{baohong.trungtamvienthong}}</p>
+            </div>
+        </div>
+</ion-content>
+</ion-view>

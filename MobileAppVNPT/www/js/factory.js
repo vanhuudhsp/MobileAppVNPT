@@ -1,12 +1,12 @@
 ﻿var base = 'http://binhduongpt.com.vn:81';
 angular.module('MobileAppVNPT.factory', [])
-
 .factory('Loader', ['$ionicLoading', '$timeout', function ($ionicLoading, $timeout) {
     var LOADERAPI = {
         showLoading: function (text) {
-            text = text || 'Loading...';
+
             $ionicLoading.show({
-                template: text
+                template: (text||"<ion-spinner icon='android'></ion-spinner>"),
+                noBackdrop: false
             });
         },
         hideLoading: function () {
@@ -58,10 +58,8 @@ angular.module('MobileAppVNPT.factory', [])
     };
     return LSAPI;
 }])
-
 .factory('AuthFactory', ['LSFactory', function (LSFactory) {
-    var userKey = 'user';
-    var tokenKey = 'token';
+    var userKey = 'user', tokenKey = 'token';
     var AuthAPI = {
         isLoggedIn: function () {
             return this.getUser() === null ? false : true;
@@ -94,7 +92,6 @@ angular.module('MobileAppVNPT.factory', [])
             if (token) {
                 config.headers['Authorization'] = token.token_type + '  ' + token.access_token;
                 config.headers['Content-Type'] = "application/json;charset=UTF-8";
-                
             }
             return config || $q.when(config);
         },
@@ -103,11 +100,10 @@ angular.module('MobileAppVNPT.factory', [])
         }
     };
 }])
-
 .factory('UserFactory', ['$http', 'AuthFactory', function ($http, AuthFactory) {
     var UserAPI = {
         login: function (user) {
-            var data = 'grant_type=password&username='+user.username+'&password='+ user.password +'&MaTinh='+user.MaTinh;
+            var data = 'grant_type=password&username='+user.username+'&password='+ user.password +'&MaTinh="'+user.MaTinh +'"';
             return $http.post(base + '/oauthtoken', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
         },
         register: function (user) {
@@ -128,19 +124,33 @@ angular.module('MobileAppVNPT.factory', [])
 
 .factory('BaoHongFactory', ['$http', 'AuthFactory', function ($http, AuthFactory) {
     var API = {
-        get: function () {
+        getDSBaoHong: function () {
             return $http.post(base + '/api/BaoHong/PostDSBaoHongTheoNV', AuthFactory.getUser());
         },
         getTienTrinh: function (baohongid) {
             var data = { 'baohongid': parseInt(baohongid) };
-            //console.log(data);
             return $http.post(base + '/api/BaoHong/PostDsTienTrinh', data);
-
         },
         setTienTrinh: function (baohongid, nhanvienid, donviid, noidung) {
             var data = { 'baohongid': parseInt(baohongid), 'nhanvienid': nhanvienid, 'donviid': donviid, 'noidung': noidung };
-            console.log(data);
             return $http.post(base + '/api/BaoHong/PostCapNhatTienTrinh', data);
+        },
+        uploadHinh: function (hinh) {
+
+            return $http.post(base + '/api/BaoHong/PostUploadHinhAnhh', hinh);
+        },
+        getHinh: function (file) {
+            return $http.post(base + '/api/BaoHong/PostLayBase64FromImage', file);
+        },
+        getDanhSachTK: function (action, nhanVienId) {
+            return $http.post(base + '/api/BaoHong/PostDuLieuCombobox', {
+                action: action,
+                nhanVienId: nhanVienId 
+            });
+        },
+        getCTThongKe: function (dichVu, myThongKe) {
+            var data = angular.extend({ name: dichVu.name, p_dichvu: dichVu.id+"" }, myThongKe);
+            return $http.post(base + '/api/BaoHong/PostBdgTkBaoHong', data);
         }
     };
     return API;

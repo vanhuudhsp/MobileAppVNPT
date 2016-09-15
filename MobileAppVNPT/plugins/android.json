@@ -7,39 +7,43 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
-        },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
+        },
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "cordova-plugin-image-picker": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.ionicsidemenu"
+            "PACKAGE_NAME": "vnpt.binhduong"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "vnpt.binhduong"
+        }
+    }
 }

@@ -1,7 +1,7 @@
 ﻿angular.module('MobileAppVNPT.directives', [])
 .directive('map', function() {
     return {
-        restrict: 'E',
+        restrict: 'AECM',
         scope: {
             onCreate: '&'
         },
